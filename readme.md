@@ -1,10 +1,9 @@
-## search-search
+## twitch-search
 
-This is a small cmd tool to search twitch for streamers that are under the `game and development` tag.
-it will use a `client_id` and a `client_secret` to fetch a twitch `client_credential` token and then use 
-this token to perform a search of the streams currently online on twitch.
+This is a small cli tool to search twitch for online streamers that are under the `game and development` tag.
+it will use a `client_id` and a `client_secret` to fetch a twitch `client_credential` token and then use this token to perform a search of the streams currently online on twitch.
 
-To use this you must set the `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET` as env variables before searching.
+To use this you must set `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET` as env variables before searching.
 
 You can as the first argument provide a search `String` to filter the results.
 
