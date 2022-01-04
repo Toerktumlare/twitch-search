@@ -4,7 +4,7 @@ use std::error::Error;
 
 type SearchResult<T, U> = Result<(T, U), Box<dyn Error>>;
 
-const ROOT_URL: &'static str = "https://api.twitch.tv/helix/streams?first=100&game_id=1469308723";
+const ROOT_URL: &str = "https://api.twitch.tv/helix/streams?first=100&game_id=1469308723";
 
 #[derive(Deserialize, Debug)]
 struct Response {
@@ -42,7 +42,7 @@ pub fn search<'a>(
 
     let resp: Response = ureq::get(&stream_url)
         .set("Authorization", &auth_header)
-        .set("Client-Id", &client_id)
+        .set("Client-Id", client_id)
         .call()?
         .into_json()?;
 

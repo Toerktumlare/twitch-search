@@ -10,10 +10,10 @@ use std::{env, process::exit};
 mod api;
 mod utils;
 
-const IGNORED_STREAMERS: &'static [&str] = &["Toerktumlare"];
+const IGNORED_STREAMERS: &[&str] = &["Toerktumlare"];
 
 fn main() {
-    let search_term = match env::args().skip(1).next() {
+    let search_term = match env::args().nth(1) {
         Some(s) => s.to_lowercase(),
         None => "".to_string(),
     };
@@ -57,11 +57,7 @@ fn main() {
                     return false;
                 }
 
-                if e.title.to_lowercase().contains(&search_term) {
-                    true
-                } else {
-                    false
-                }
+                e.title.to_lowercase().contains(&search_term)
             })
             .collect::<Vec<_>>()
         {
@@ -73,9 +69,9 @@ fn main() {
         }
     }
 
-    println!("");
+    println!();
     results.iter().for_each(|result| print(&result));
-    println!("");
+    println!();
 
     println!("Done ({}/{}) \u{2764}", found, total_entries);
 }
